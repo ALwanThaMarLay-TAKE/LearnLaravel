@@ -1,1 +1,1 @@
-<a href="/{{ $slot }}">{{ $slot }}</a>
+<a href="/@php $slot!== "home" &&  $slot  @endphp">{{ $slot }}</a>
