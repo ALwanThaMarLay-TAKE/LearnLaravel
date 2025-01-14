@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
-        @vite("resources/css/app.css")
+        @vite('resources/css/app.css')
     </head>
 
     <body class="h-full">
@@ -24,10 +24,10 @@
                             <div class="hidden md:block">
                                 <div class="flex items-baseline ml-10 space-x-4">
 
-                                    <x-nav type="a" :active="request()->is('/')" href="/">Home</x-nav>
+                                    <x-nav :active="request()->is('/')" href="/">Home</x-nav>
 
-                                    <x-nav type="button" :active="request()->is('about')" herf="#" >About</x-nav>
-                                    <x-nav type="a" :active="request()->is('contact')" href="/contact">Contact</x-nav>
+                                    <x-nav :active="request()->is('jobs')" href="/jobs">Jobs</x-nav>
+                                    <x-nav :active="request()->is('contact')" href="/contact">Contact</x-nav>
                                 </div>
                             </div>
                         </div>
