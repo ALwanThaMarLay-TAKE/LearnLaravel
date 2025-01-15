@@ -3,8 +3,9 @@
         Job List
     </x-slot:heading>
     <ul>
+
         @foreach ($jobs as $job)
-            <li><a href="/job/{{ $job['id'] }}">{{ $job['job'] }}</a></li>
+            <li><a href="/job/{{ $job['id'] }}">{{ $job['name'] }}</a></li>
         @endforeach
     </ul>
 </x-layout>

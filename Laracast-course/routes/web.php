@@ -5,18 +5,20 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+
     return view('home');
 });
 
 Route::get('/jobs', function () {
+    $jobs =     Job::all();
 
-    return view('jobs', ["jobs" => Job::all()]);
+    return view('jobs', ["jobs" => $jobs]);
 });
 
 Route::get('/job/{id}', function ($data) {
 
 
-  $job =   job::find($data);
+    $job =   job::find($data);
     return view('job', compact("job"));
 });
 
