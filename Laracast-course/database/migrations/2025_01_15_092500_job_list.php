@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('salary');
             // $table->unsignedBigInteger("employer_id");
             // $table->foreign("employer_id")->references("id")->on("employers");
-            $table->foreignIdFor(Employer::class, "employer_id")->constrained()->onDelete("cascade");
+            $table->foreignIdFor(Employer::class, "employer_id")->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
