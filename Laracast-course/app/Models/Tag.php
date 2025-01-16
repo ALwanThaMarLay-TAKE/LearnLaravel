@@ -17,3 +17,5 @@ class Tag extends Model
 
 //* relatePiovtKey is for the class that belong function argument (Job::class) assume job_list_id instead of job_id
 
+//* $tag->jobs()->attach(job_list_id)
+    //* $tag->jobs()->attach(App\Models\Job::find(id)
