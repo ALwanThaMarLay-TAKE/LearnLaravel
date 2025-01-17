@@ -10,8 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    $jobs =     Job::all();
-
+    // $jobs = Job::all();  //*this is lazy loading and happen multiple sql query
+    $jobs = Job::with("employer")->get(); //* this is eager loading and query multiple item in one time
     return view('jobs', ["jobs" => $jobs]);
 });
 

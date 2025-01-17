@@ -20,8 +20,4 @@ class Job extends Model
     {
         return $this->belongsToMany(Tag::class,   foreignPivotKey: "job_list_id");
     }
-    //* foreignPivotKey is for the current model class , ( Job model ) assume as job_list_id instead of job_id
-
-    //* $job->tags()->attach(tag_id)
-    //* $job->tags()->attach(App\Models\Tag::find(id))
 }

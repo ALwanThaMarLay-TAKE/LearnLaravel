@@ -14,8 +14,3 @@ class Tag extends Model
         return $this->belongsToMany(Job::class, relatedPivotKey: "job_list_id");
     }
 }
-
-//* relatePiovtKey is for the class that belong function argument (Job::class) assume job_list_id instead of job_id
-
-//* $tag->jobs()->attach(job_list_id)
-    //* $tag->jobs()->attach(App\Models\Job::find(id)
