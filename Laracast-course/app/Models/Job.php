@@ -10,7 +10,8 @@ class Job extends Model
 {
     use HasFactory;
     protected $table = "job_list";
-    protected $fillable = ["name", "salary"];
+    // protected $fillable = ["name", "salary" , "employer_id"];
+    protected $guarded = []; // disabled default security check of laravel , opposite of fillable
     //App\Models\Job::create(['name'=>"designer" , 'salary' => "20000"])
     public function employer()
     {
