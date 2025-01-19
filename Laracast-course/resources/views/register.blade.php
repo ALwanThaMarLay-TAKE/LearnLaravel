@@ -4,10 +4,10 @@
     </x-slot:heading>
     <div class="space-y-4">
         <div class="w-1/2">
-            <form class="space-y-6" action="/jobs" method="POST">
+            <form class="space-y-6" action="/register" method="POST">
                 @csrf
                 <div>
-                    <x-form-label for="name">Job Name</x-form-label>
+                    <x-form-label for="name">Name</x-form-label>
                     <div class="mt-2">
 
                         <x-form-input type="name" name="name" id="name" />
@@ -17,18 +17,40 @@
                         <x-form-error name="name" />
                     </div>
                 </div>
+                <div>
+                    <x-form-label for="email">Email</x-form-label>
+                    <div class="mt-2">
+
+                        <x-form-input type="email" name="email" id="email" />
+
+                    </div>
+                    <div class="mt-1">
+                        <x-form-error name="email" />
+                    </div>
+                </div>
 
                 <div>
                     <div class="flex items-center justify-between">
-                        <x-form-label for="salary">Salary</x-form-label>
+                        <x-form-label for="password">Password</x-form-label>
 
                     </div>
                     <div class="mt-2">
-                        <x-form-input type="salary" name="salary" id="salary" />
+                        <x-form-input type="password" name="password" id="password" />
                     </div>
                     <div class="mt-1">
 
-                        <x-form-error name='salary' />
+                        <x-form-error name='password' />
+                    </div>
+                </div>
+                <div>
+                    <x-form-label for="confirm_password">Password Confirmation</x-form-label>
+                    <div class="mt-2">
+
+                        <x-form-input type="confirm_password" name="confirm_password" id="confirm_password" />
+
+                    </div>
+                    <div class="mt-1">
+                        <x-form-error name="confirm_password" />
                     </div>
                 </div>
 
@@ -38,18 +60,6 @@
                 </div>
             </form>
         </div>
-        {{-- <div>
-            @if ($errors->any())
-
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li class="text-sm italic">{{ $error }}</li>
-                    @endforeach
-
-                </ul>
-
-            @endif
-        </div> --}}
 
         <div>
 

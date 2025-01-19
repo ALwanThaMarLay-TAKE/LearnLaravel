@@ -15,13 +15,13 @@
             <nav class="bg-gray-800">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class="flex h-16 items-center justify-between">
-                        <div class="flex items-center">
+                        <div class="flex-grow-1 flex items-center">
                             <div class="shrink-0">
                                 <img class="size-8"
                                     src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                                     alt="Your Company">
                             </div>
-                            <div class="hidden md:block">
+                            <div class="">
                                 <div class="ml-10 flex items-baseline space-x-4">
 
                                     <x-nav :active="request()->is('/')" href="/">Home</x-nav>
@@ -29,17 +29,16 @@
                                     <x-nav :active="request()->is('jobs')" href="/jobs">Jobs</x-nav>
                                     <x-nav :active="request()->is('contact')" href="/contact">Contact</x-nav>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="hidden md:block">
-                            <div class="ml-4 flex items-center md:ml-6">
-
-                                <x-button href="/jobs/create">
-                                    Create Job
-                                </x-button>
 
                             </div>
                         </div>
+
+                        <div class="flex gap-3">
+                            <x-nav :active="request()->is('login')" href="/login">Login</x-nav>
+                            <x-nav :active="request()->is('register')" href="/register">Register</x-nav>
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -47,9 +46,16 @@
 
         </nav>
 
-        <header class="bg-white shadow">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <header class="flex items-center justify-between bg-white px-5 shadow">
+            <div class="max-w-7xl py-6 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+            </div>
+            <div class="ml-4 flex items-center md:ml-6">
+
+                <x-button href="/jobs/create">
+                    Create Job
+                </x-button>
+
             </div>
         </header>
         <main>

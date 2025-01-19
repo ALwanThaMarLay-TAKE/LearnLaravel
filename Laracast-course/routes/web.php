@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\RegisterUserController;
 use App\Models\Job;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Arr;
@@ -26,10 +28,15 @@ Route::view("/", "home");
 //         Route::delete('/jobs/{job}', "destroy");
 //     }
 // );
-Route::resource("jobs", JobController::class, [
+
+Route::resource(
+    "jobs",
+    JobController::class,
+    // [
     // "except" => ["edit" , "create"] //? no want edit route and create route
     // "only" => ["store" , "index"] //? only want store and index routes
-]);
+    // ]
+);
 //* Route:resource follow rest conventiential and automatically know the accordion to controller methods
 
 
@@ -37,3 +44,7 @@ Route::resource("jobs", JobController::class, [
 //     return view('contact');
 // });
 Route::view("/contact", "contact"); //? ::view is use for static page like this
+Route::post("/login", [LoginUserController::class, "store"]);
+Route::get("/login", [LoginUserController::class, "create"]);
+Route::post("/register", [RegisterUserController::class, "store"]);
+Route::get("/register", [RegisterUserController::class, "create"]);
