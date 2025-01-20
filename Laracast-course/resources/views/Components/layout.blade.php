@@ -32,12 +32,23 @@
 
                             </div>
                         </div>
+@guest
 
-                        <div class="flex gap-3">
-                            <x-nav :active="request()->is('login')" href="/login">Login</x-nav>
-                            <x-nav :active="request()->is('register')" href="/register">Register</x-nav>
+<div class="flex gap-3">
+    <x-nav :active="request()->is('login')" href="/login">Login</x-nav>
+    <x-nav :active="request()->is('register')" href="/register">Register</x-nav>
 
-                        </div>
+</div>
+@endguest
+@auth
+
+    <form action="/logout" method="POST"
+    >
+@csrf
+<button class="block rounded-md px-3 py-2 text-base font-medium hover:bg-red-700 hover:text-white bg-red-400">Logout</button>
+</form>
+
+@endauth
 
                     </div>
 

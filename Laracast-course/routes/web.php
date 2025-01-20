@@ -46,5 +46,6 @@ Route::resource(
 Route::view("/contact", "contact"); //? ::view is use for static page like this
 Route::post("/login", [LoginUserController::class, "store"]);
 Route::get("/login", [LoginUserController::class, "create"]);
+Route::post("/logout", [LoginUserController::class, "destroy"]);
 Route::post("/register", [RegisterUserController::class, "store"]);
 Route::get("/register", [RegisterUserController::class, "create"]);
