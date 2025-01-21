@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -35,16 +37,14 @@ class JobController extends Controller
     {
         //inline authorize
         // authorization step : check login or not , check user has permission to control changes
-        if (Auth::guest()) { // user is login or not
 
-            return redirect('/login');
-        };
+        Gate::define("edit-job", function (User $user, Job $job) { //$user will be automatically currently sign in user but you are not sign in auto redirect login page and want to customize the $use just pass default argument null or make it opational using "?"
+            return $job->employer->user->is($user);
+        });
 
-        if ($job->employer->user->isNot(Auth::user())) { //have permission to change things
-            abort(403);
-        };
 
-        //* $job = Job::findOrFail($job); no need when route model binding
+        Gate::authorize("edit-job", $job); // if fail abort(403) $job is argument for define function
+        // Gate::allows("edit-job" , $job) or Gate::denies("edit-job" , $job) can use for customize logic with if statement
 
 
         return view("jobs.edit", ["job" => $job]);
