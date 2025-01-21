@@ -39,11 +39,15 @@ class JobController extends Controller
         // authorization step : check login or not , check user has permission to control changes
 
 
-
+       
 
         Gate::authorize("edit-job", $job); // if fail abort(403) $job is argument for define function
         // Gate::allows("edit-job" , $job) or Gate::denies("edit-job" , $job) can use for customize logic with if statement
 
+
+        // if (Auth::user()->cannot("edit-job", $job)) { // can authorize using can and cannot function instead of G
+        // abort(403);
+        //  }
 
         return view("jobs.edit", ["job" => $job]);
     }
