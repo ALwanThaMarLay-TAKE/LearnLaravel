@@ -4,7 +4,7 @@
     </x-slot:heading>
     <h1 class="font-serif font-bold text-gray-700">This job pay {{ $job['salary'] }} per year</h1>
     <div class="mt-10 flex justify-between">
-        @can('edit-job', $job)
+        @can('edit', $job)
             {{-- condition for authorization using gate --}}
             <div>
                 <a class="rounded bg-gray-300 p-1 text-blue-500 underline" href="/jobs">Back to Jobs</a>

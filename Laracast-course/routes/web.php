@@ -21,11 +21,11 @@ Route::controller(JobController::class)->group(
     function () {
         Route::get('/jobs', "index")->middleware("auth"); //fail auto redirect to laravel default login page , we need to name our login page using name function
         Route::get('/jobs/create', "create")->middleware("auth");
-        Route::get("/jobs/{job}/edit", "edit")->middleware(['auth', 'can:edit-job,job']);
+        Route::get("/jobs/{job}/edit", "edit")->middleware(['auth', 'can:edit,job']);
         Route::post('/jobs', "store")->middleware("auth");
         Route::get('/jobs/{job}', "show")->middleware("auth");;
-        Route::patch('/jobs/{job}', "update")->middleware("auth")->can("edit-job", "job"); //same as midddleware("can:job-edit,job")
-        Route::delete('/jobs/{job}', "destroy")->middleware("auth")->can("edit-job", "job");
+        Route::patch('/jobs/{job}', "update")->middleware("auth")->can("edit", "job"); //same as midddleware("can:job-edit,job")
+        Route::delete('/jobs/{job}', "destroy")->middleware("auth")->can("edit", "job");
     }
 );
 
