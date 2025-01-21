@@ -38,9 +38,7 @@ class JobController extends Controller
         //inline authorize
         // authorization step : check login or not , check user has permission to control changes
 
-        Gate::define("edit-job", function (User $user, Job $job) { //$user will be automatically currently sign in user but you are not sign in auto redirect login page and want to customize the $use just pass default argument null or make it opational using "?"
-            return $job->employer->user->is($user);
-        });
+
 
 
         Gate::authorize("edit-job", $job); // if fail abort(403) $job is argument for define function
