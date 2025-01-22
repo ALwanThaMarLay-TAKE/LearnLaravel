@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\TranslateJob;
 use App\Mail\JobPosted;
 use App\Models\Job;
 use App\Models\User;
@@ -33,7 +34,10 @@ class JobController extends Controller
             "salary" => request("salary"),
             "employer_id" => 1
         ]);
-        Mail::to($job->employer->user)->send(new JobPosted($job)); //laravel auto know the email when he get user
+        Mail::to($job->employer->user)->queue(new JobPosted($job)); //laravel auto know the email when he get user
+
+        // TranslateJob::dispatch($job); //using queue with job laravle support job(queue)
+        return "done ";
         return redirect("/jobs");
     }
     public function edit(Job $job) //this is route model binding

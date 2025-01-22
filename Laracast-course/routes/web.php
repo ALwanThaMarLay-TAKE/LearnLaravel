@@ -3,6 +3,8 @@
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\RegisterUserController;
+use App\Jobs\TranslateJob;
+use App\Mail\JobPosted;
 use App\Models\Job;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Arr;
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 Route::view("/", "home");
+Route::get("/test", function () {
+    // dispatch(function(){ //dispatch fun make queue job
+    //     logger("this is your queue work ");
+    // });
+
+    $job = Job::first();
+    TranslateJob::dispatch($job); //dispatch fun make run handle fun and $job parameter pass to _constructor fun
+    return "done ";
+});
 
 
 //? in route model binding "id" is default , if you config write like this posts/{post:slug} will search according to slug column
